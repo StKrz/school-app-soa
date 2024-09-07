@@ -7,9 +7,6 @@ import java.util.Map;
 
 public class TeacherValidator {
 
-    /**
-     * No instances of this class should be available
-     */
     private TeacherValidator() {
 
     }

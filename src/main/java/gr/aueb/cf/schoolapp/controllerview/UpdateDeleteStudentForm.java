@@ -73,7 +73,7 @@ public class UpdateDeleteStudentForm extends JFrame {
             public void windowActivated(WindowEvent e) {
                 String sql = "SELECT * FROM STUDENTS WHERE LASTNAME LIKE ?";
                 // Connection conn = Login.getConnection();
-                //Connection conn = null;
+                // Connection conn = null;
                 try {
                     conn = DBUtil.getConnection();
                 } catch (SQLException e2) {
@@ -81,8 +81,8 @@ public class UpdateDeleteStudentForm extends JFrame {
                     e2.printStackTrace();
                 }
                 try {
-                    //DBUtil.getConnection();
-                    //System.out.println("Search name" + Main.getStudentsMenu().getLastname().trim())
+                    // DBUtil.getConnection();
+                    // System.out.println("Search name" + Main.getStudentsMenu().getLastname().trim())
                     ps = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
                     ps.setString(1, Main.getSearchStudentForm().getLastname() + "%");
                     rs = ps.executeQuery();

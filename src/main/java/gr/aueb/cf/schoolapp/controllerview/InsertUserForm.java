@@ -90,7 +90,7 @@ public class InsertUserForm extends JFrame {
                 Map<String, String> errors = new HashMap<>();
 
                 // Data Binding
-                // Παίρνω τα δεδομένα από τη φόρμα.
+                // Getting the data from the form.
                 String inputUsername = usernameTxt.getText().trim();
                 String inputPassword = passwordTxt.getText().trim();
 

@@ -20,9 +20,6 @@ public class DateUtil {
         }
     };
 
-    /**
-     * No instances of this Utility class should be available.
-     */
     private DateUtil() {
 
     }
@@ -63,11 +60,6 @@ public class DateUtil {
         return getDateFormat().format(date);
     }
 
-    /**
-     *
-     * @param date
-     * @return
-     */
     public static String toSQLDateString(java.sql.Date date) {
         return getDateFormat().format(date);
     }
