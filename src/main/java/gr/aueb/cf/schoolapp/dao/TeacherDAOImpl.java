@@ -1,6 +1,5 @@
 package gr.aueb.cf.schoolapp.dao;
 
-import gr.aueb.cf.schoolapp.dao.ITeacherDAO;
 import gr.aueb.cf.schoolapp.dao.exceptions.TeacherDAOException;
 import gr.aueb.cf.schoolapp.model.Teacher;
 import gr.aueb.cf.schoolapp.service.util.DBUtil;
@@ -17,19 +16,15 @@ public class TeacherDAOImpl implements ITeacherDAO {
     @Override
     public Teacher insert(Teacher teacher) throws TeacherDAOException {
         String sql = "INSERT INTO TEACHERS (FIRSTNAME, LASTNAME) VALUES (?, ?)";
-        /* Ερωτηματικά βάζουμε για να μην έχουμε προβλήματα με SQL Injections */
         try (Connection connection = DBUtil.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
-            /* πρέπει από τους teachers να πάρουμε με τους getters που ΕΜΕΙΣ θα δημιουργήσουμε
-             *  τα firstname, lastname και να τα βάλουμε στα ερωτηματικά */
             String firstname = teacher.getFirstname();
             String lastname = teacher.getLastname();
 
             ps.setString(1, firstname);
             ps.setString(2, lastname);
 
-            int n = ps.executeUpdate(); // με το n θα δούμε το πόσες γραμμές
-            // επηρεάστηκαν.
+            int n = ps.executeUpdate();
             if (n != 1) {
                 return null;
             }
@@ -45,11 +40,8 @@ public class TeacherDAOImpl implements ITeacherDAO {
     public Teacher update(Teacher teacher) throws TeacherDAOException {
 
         String sql = "UPDATE TEACHERS SET FIRSTNAME = ?, LASTNAME = ? WHERE ID = ?";
-        /* Ερωτηματικά βάζουμε για να μην έχουμε προβλήματα με SQL Injections */
         try (Connection connection = DBUtil.getConnection();
              PreparedStatement ps = connection.prepareStatement(sql)) {
-            /* πρέπει από τους teachers να πάρουμε με τους getters που ΕΜΕΙΣ θα δημιουργήσουμε
-             *  τα firstname, lastname και να τα βάλουμε στα ερωτηματικά */
             int id = teacher.getId();
             String firstname = teacher.getFirstname();
             String lastname = teacher.getLastname();
@@ -58,8 +50,7 @@ public class TeacherDAOImpl implements ITeacherDAO {
             ps.setString(2, lastname);
             ps.setInt(3, id);
 
-            int n = ps.executeUpdate(); // με το n θα δούμε το πόσες γραμμές
-            // επηρεάστηκαν.
+            int n = ps.executeUpdate();
             if (n != 1) {
                 return null;
             }
